@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universitas Abdurrab (UNIVRAB) - Beranda Resmi</title>
+  <title>Universitas Abdurrab (UNIVRAB) - Beranda Resmi & SPADA</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -71,9 +71,9 @@
       padding: 0 15px;
     }
     
-    /* Hero Section (Replicating the banner from the image) */
+    /* Hero Section */
     .hero-banner {
-      background: var(--univrab-bg-dark); /* Darker background for contrast */
+      background: var(--univrab-bg-dark);
       color: var(--univrab-text-light);
       padding: 20px;
       border-radius: var(--border-radius);
@@ -84,7 +84,7 @@
       font-size: 1.8rem;
       margin-top: 0;
       font-weight: 800;
-      color: #ffe082; /* Warna kuning/emas untuk highlight */
+      color: #ffe082;
     }
     .hero-banner p { font-size: 1.1rem; margin-bottom: 10px; }
     .cta-button {
@@ -99,7 +99,7 @@
     }
     .cta-button:hover { background: var(--univrab-red); }
 
-    /* Statistic Blocks (Replicating the red blocks from the image) */
+    /* Statistic Blocks */
     .statistic-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -116,7 +116,7 @@
       transition: transform 0.2s;
     }
     .stat-block:hover { transform: translateY(-3px); }
-    .stat-block .icon { font-size: 2.2rem; margin-bottom: 5px; } /* Use simple text/emoji icon */
+    .stat-block .icon { font-size: 2.2rem; margin-bottom: 5px; }
     .stat-block .number { font-size: 2.5rem; font-weight: 800; margin: 0; }
     .stat-block .label { font-size: 1rem; font-weight: 600; margin-top: 5px; opacity: 0.9; }
 
@@ -127,12 +127,49 @@
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
       margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: space-between;
     }
     .page-section h2 {
       color: var(--univrab-text-accent);
       border-bottom: 2px solid #eee;
       padding-bottom: 10px;
       margin-top: 0;
+      width: 100%; /* Make heading full width */
+    }
+    /* Feature Card Styles for SPADA */
+    .feature-card {
+        background: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        flex: 1 1 calc(33.333% - 15px); /* 3 cards per row, with gap */
+        min-width: 250px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        transition: border-color 0.3s;
+    }
+    .feature-card:hover {
+        border-color: var(--univrab-red);
+    }
+    .feature-card h3 {
+        color: var(--univrab-red);
+        font-size: 1.3rem;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    /* Info Block in Content */
+    .info-block-content {
+        background: #fef4e7;
+        color: #9c6c39;
+        padding: 12px;
+        border-left: 4px solid #f9a825;
+        border-radius: 4px;
+        margin-top: 15px;
+        font-size: 0.95rem;
     }
 
     /* Footer */
@@ -150,6 +187,7 @@
       .main-nav { flex-wrap: wrap; justify-content: center; }
       .nav-links { justify-content: center; margin-top: 10px; gap: 15px; }
       .site-title { font-size: 1.2rem; }
+      .feature-card { flex: 1 1 100%; } /* Single column on small screens */
     }
     @media (max-width: 600px) {
       .top-bar { display: none; }
@@ -170,7 +208,7 @@
         <li><a href="#" class="active" data-page="profil" onclick="showContent(this)">PROFIL</a></li>
         <li><a href="#" data-page="penerimaan" onclick="showContent(this)">PENERIMAAN</a></li>
         <li><a href="#" data-page="perkuliahan" onclick="showContent(this)">PERKULIAHAN</a></li>
-        <li><a href="#" data-page="penelitian" onclick="showContent(this)">PENELITIAN & PUBLIKASI</a></li>
+        <li><a href="#" data-page="spada" onclick="showContent(this)">SPADA 🌐</a></li> <li><a href="#" data-page="penelitian" onclick="showContent(this)">PENELITIAN & PUBLIKASI</a></li>
         <li><a href="#" data-page="civitas" onclick="showContent(this)">CIVITAS</a></li>
       </ul>
     </div>
@@ -231,7 +269,6 @@
   </footer>
 
   <script>
-    // Fungsi untuk mengganti konten halaman (disederhanakan untuk tampilan beranda)
     const pageContent = {
       'profil': `
         <h2>Profil Singkat</h2>
@@ -246,6 +283,68 @@
         <h2>Informasi Akademik</h2>
         <p>Informasi KRS, jadwal kuliah, kalender akademik, dan SIAKAD terbaru dapat diakses melalui portal mahasiswa. Pastikan data diri selalu terverifikasi.</p>
       `,
+      // =========================================================
+      // FITUR SPADA BARU
+      // =========================================================
+      'spada': `
+        <h2>SPADA UNIVRAB: Sistem Pembelajaran Daring 🌐</h2>
+        <div class="feature-card">
+            <h3>📝 Tugas & Kuis Online</h3>
+            <p>Mahasiswa dapat mengunggah tugas dan mengikuti kuis/ujian mandiri secara terstruktur sesuai batas waktu yang ditentukan dosen.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🗣️ Forum Diskusi Interaktif</h3>
+            <p>Ruang untuk tanya jawab dan diskusi mendalam antara dosen dan sesama mahasiswa terkait materi perkuliahan.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📊 Rekap Nilai & Progres</h3>
+            <p>Akses cepat ke rekapitulasi nilai tugas, kuis, dan ujian. Lacak progres pembelajaran Anda secara real-time.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📚 Repositori Materi Digital</h3>
+            <p>Unduh materi ajar (modul, video, presentasi) kapan saja dan di mana saja. Terintegrasi dengan perpustakaan digital kampus.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🗓️ Kalender Akademik Terpadu</h3>
+            <p>Lihat jadwal kuliah, batas akhir pengumpulan tugas, dan tanggal-tanggal penting akademik dalam satu tampilan.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📧 Notifikasi Real-time</h3>
+            <p>Dapatkan pemberitahuan langsung melalui email atau notifikasi *in-app* untuk tugas baru atau pembaruan nilai.</p>
+        </div>
+        <div class="info-block-content" style="width: 100%;">
+            **Peringatan:** Pastikan Anda menggunakan akun **SIAKAD** yang aktif untuk login ke SPADA. Gunakan browser modern untuk pengalaman terbaik.
+        </div>
+      `,
+      // =========================================================
+      // MATERI WEB DITINGKATKAN (dari permintaan sebelumnya)
+      // =========================================================
+      'materi': `
+        <h2>Materi Web Modern & Infrastruktur 💻</h2>
+        <div class="feature-card" style="flex: 1 1 45%;">
+          <h3>🌐 Fundamental Web</h3>
+          <ul>
+            <li>**HTML5 Semantik:** Struktur dasar yang kuat.</li>
+            <li>**CSS3 & Responsif:** Desain *mobile-first* menggunakan Flexbox & Grid.</li>
+            <li>**JavaScript (ES6+):** Logika interaktif dan manipulasi DOM.</li>
+            <li>**Keamanan Dasar:** Konsep XSS, CSRF, dan pentingnya HTTPS.</li>
+          </ul>
+        </div>
+        <div class="feature-card" style="flex: 1 1 45%;">
+          <h3>☁️ Server & Deployment</h3>
+          <ul>
+            <li>**Web Server:** NGINX dan Apache.</li>
+            <li>**Cloud Computing:** Konsep AWS, GCP, dan Azure.</li>
+            <li>**Containerization:** Pengenalan Docker dan Kubernetes.</li>
+            <li>**DevOps CI/CD:** Automasi deployment dengan GitHub Actions.</li>
+          </ul>
+        </div>
+        <div class="info-block-content" style="width: 100%;">
+            **Info Lanjutan:** Pelajari framework modern (React/Vue) setelah menguasai dasar-dasar ini.
+        </div>
+      `,
+      // =========================================================
+      
       'penelitian': `
         <h2>Riset dan Publikasi</h2>
         <p>UNIVRAB aktif dalam penelitian ilmiah dan pengabdian masyarakat. Kami mendorong civitas akademika untuk terus berinovasi dan mempublikasikan hasil riset ke jurnal nasional dan internasional.</p>
@@ -254,7 +353,6 @@
         <h2>Civitas Akademika</h2>
         <p>Data dosen, staf, dan informasi layanan mahasiswa tersedia. Kami berupaya menyediakan lingkungan akademik yang suportif dan kondusif untuk seluruh warga kampus.</p>
       `,
-      // Default content is replaced by the main page content above
       'default': `<h2>Selamat Datang</h2><p>Selamat datang di halaman resmi Universitas Abdurrab.</p>`
     };
 
@@ -262,308 +360,28 @@
       const page = element.getAttribute('data-page');
       const content = document.getElementById('main-content');
       const links = document.querySelectorAll('.nav-links a');
+      
       links.forEach(link => link.classList.remove('active'));
       element.classList.add('active');
       
-      // Khusus untuk tampilan akademia, konten utama (di luar statistik dan hero)
-      // akan diganti, sementara statistik tetap di atas.
-      content.innerHTML = pageContent[page] || pageContent['default'];
-      window.scrollTo({ top: content.offsetTop - 70, behavior: 'smooth' }); // Scroll ke konten baru
+      // Mengubah innerHTML
+      content.innerHTML = pageContent[page] || pageContent['profil'];
+      
+      // Scroll to content section smoothly
+      if (page !== 'profil') { // Only scroll if navigating away from default
+          window.scrollTo({ top: content.offsetTop - 70, behavior: 'smooth' });
+      }
     }
 
     // Set initial content to profil
     document.addEventListener("DOMContentLoaded", () => {
-      showContent(document.querySelector(".nav-links a.active"));
-    });
-  </script>
-</body>
-</html>
-    @media (max-width: 940px) { .column { width: 100%; min-width: unset; } .content {flex-direction:column;align-items:center;} }
-    @media (max-width: 600px) { nav {gap:.7rem;} header {padding:1.1rem;} .card {width:100%;} .info-news{padding:10px 8px;} }
-    /* Dark Mode */
-    body.dark {
-      --primary-bg:#211933;
-      --primary-card:#231e3b;
-      --accent-soft:#2c2440;
-      --text-main:#f5f5fa;
-      --accent-color:#f2b705;
-      --accent-dark:#bb8600;
-      --text-secondary:#ffe19d;
-    }
-    body.dark nav {background:var(--accent-color);}
-    body.dark header, body.dark .info-news {background:linear-gradient(90deg,#2c2440 70%,#231e3b);}
-    body.dark .column, body.dark .column.highlight {background:#382666;}
-    body.dark .footer {background:var(--accent-dark);}
-    body.dark .info-news {background:#382666;}
-    body.dark .info-block {background:#23213a;}
-    body.dark .card {background:#23213a;}
-  </style>
-</head>
-<body>
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/id/9/94/Logo_UNIVRAB.png" alt="UNIVRAB Logo" class="logo" />
-    <h1>UNIVRAB — Web Dasar & Modern</h1>
-    <h2>Teknik Informatika | Tema Ringan & Fitur Baru</h2>
-    <div class="clock" id="live-clock"></div>
-    <div class="theme-switch">
-      <input type="checkbox" id="theme-toggle"><label for="theme-toggle" id="theme-label">🌙 Dark Mode</label>
-    </div>
-  </header>
-
-  <nav>
-    <a href="#" class="active" data-page="profil" onclick="showContent(this)">Profil</a>
-    <a href="#" data-page="materi" onclick="showContent(this)">Materi</a>
-    <a href="#" data-page="server" onclick="showContent(this)">Web Server</a>
-    <a href="#" data-page="news" onclick="showContent(this)">Info/Berita</a>
-    <a href="#" data-page="penugasan" onclick="showContent(this)">Penugasan</a>
-    <a href="#" data-page="kontak" onclick="showContent(this)">Kontak</a>
-  </nav>
-
-  <div class="info-news" id="news-block" style="display:none;">
-    <p id="news-text">Selamat datang di website resmi pembelajaran Web UNIVRAB! Kunjungi setiap menu untuk info terkini & materi terbaru.</p>
-    <div class="info-news-btns">
-      <button class="info-news-btn" onclick="showNews(0)">Info 1</button>
-      <button class="info-news-btn" onclick="showNews(1)">Info 2</button>
-      <button class="info-news-btn" onclick="showNews(2)">Tips Web</button>
-      <button class="info-news-btn" onclick="showNews(3)">Motivasi</button>
-    </div>
-  </div>
-
-  <section class="content" id="main-content">
-    <div class="column">
-      <h3>Sejarah UNIVRAB</h3>
-      <p>Universitas Abdurrab berdiri sejak 2005, berawal dari Chest Clinic 1979. Kini menjadi kampus unggulan di Riau dengan ekosistem digital modern.</p>
-      <div class="info-block">Info: Kampus UNIVRAB menampung >7000 mahasiswa aktif, 19 prodi & 4 fakultas, dengan fasilitas auditorium, laboratorium, dan internet fiber.</div>
-    </div>
-    <div class="column">
-      <h3>Visi Kampus</h3>
-      <p>Berkualitas Islami, inovasi teknologi, mencetak generasi yang adaptif serta mampu bersaing di era digital. Fokus pada kolaborasi global & riil.</p>
-      <ul>
-        <li>Terakreditasi BAN-PT</li>
-        <li>Kerjasama nasional & internasional</li>
-        <li>Pusat laboratorium teknologi</li>
-      </ul>
-    </div>
-    <div class="column highlight">
-      <h3>Informasi Kontak</h3>
-      <p>No. Telp: (0761) 38762<br>Web: <a href="https://www.univrab.ac.id" target="_blank">univrab.ac.id</a><br>Email: humas@univrab.ac.id</p>
-      <ul>
-        <li>Mahasiswa aktif: 7.100+</li>
-        <li>Alumni: 8.255+</li>
-        <li>Program Studi: 19</li>
-        <li>Fakultas: 4</li>
-      </ul>
-    </div>
-  </section>
-
-  <footer class="footer">
-    © 2025 UNIVRAB. Dikembangkan dengan ♥ & teknologi terbaru. <br>
-    <small>Tim TI UNIVRAB & Copilot</small>
-  </footer>
-
-  <script>
-    /* =========== LIVE CLOCK ============ */
-    function updateClock() {
-      const clock = document.getElementById("live-clock");
-      const now = new Date();
-      const jam = now.getHours().toString().padStart(2, '0');
-      const menit = now.getMinutes().toString().padStart(2, '0');
-      const detik = now.getSeconds().toString().padStart(2, '0');
-      clock.textContent = `${jam}:${menit}:${detik} WIB`;
-    }
-    setInterval(updateClock, 500); updateClock();
-
-    /* ======= DARK MODE ========== */
-    document.getElementById('theme-toggle').addEventListener('change', function(e){
-      document.body.classList.toggle('dark', this.checked);
-      document.getElementById('theme-label').textContent = this.checked ? '🌞 Light Mode' : '🌙 Dark Mode';
-    });
-
-    /* ====== INFO NEWS ======= */
-    const newsList = [
-      "Selamat datang di website resmi pembelajaran Web UNIVRAB! Kunjungi setiap menu untuk info terkini & materi terbaru.",
-      "🎉 Login SIAKAD terbaru sudah dapat diakses! Pastikan data & password aktif selalu update.",
-      "Tips Web: Gunakan <strong>HTML Semantik</strong> dan desain responsif agar web lebih SEO-friendly dan user-friendly.",
-      "Motivasi: Terus belajar teknologi baru, berinovasi & konsisten. Teknologi web selalu berkembang, upgrade skillmu tiap hari!"
-    ];
-    function showNews(idx) {
-      document.getElementById("news-text").innerHTML = newsList[idx];
-    }
-
-    /* ============== PAGE KONTEN =============== */
-    const pageContent = {
-      'profil': `
-        <div class="column">
-          <h3>Sejarah UNIVRAB</h3>
-          <p>Universitas Abdurrab berdiri sejak 2005, berawal dari Chest Clinic 1979. Kini menjadi kampus unggulan di Riau dengan ekosistem digital modern.</p>
-          <div class="info-block">Info: Kampus UNIVRAB menampung &gt;7000 mahasiswa aktif, 19 prodi &amp; 4 fakultas, dengan fasilitas auditorium, laboratorium, dan internet fiber.</div>
-        </div>
-        <div class="column">
-          <h3>Visi, Misi & Akreditasi</h3>
-          <p>Menjadi universitas islami, inovatif, berbasis teknologi, membentuk generasi siap digital. Fokus pada pengabdian, riset & jejaring global.</p>
-          <ul>
-            <li>Terakreditasi BAN-PT</li>
-            <li>Laboratorium software & AI</li>
-            <li>Program Merdeka Belajar</li>
-          </ul>
-        </div>
-        <div class="column highlight">
-          <h3>Data Kampus</h3>
-          <ul>
-            <li>Mahasiswa aktif: 7.100+</li>
-            <li>Alumni: 8.255+</li>
-            <li>Program Studi: 19</li>
-            <li>Fakultas: 4</li>
-            <li>Kerjasama: 30+ kampus & industri</li>
-          </ul>
-        </div>
-      `,
-      'materi': `
-        <div class="column">
-          <h3>Pengenalan Web Modern</h3>
-          <p>Pelajari konsep HTML5, CSS3, JavaScript ES6+, mobile-first design & responsive layout. Framework populer: React, Vue, Svelte.</p>
-          <div class="info-block">Tips: Gunakan editor modern seperti VSCode. Fitur Live Server cocok untuk preview langsung.</div>
-        </div>
-        <div class="column">
-          <h3>Teknologi & Infrastruktur</h3>
-          <p>Web server masa kini memakai cloud (AWS, GCP), virtualisasi (Docker/Kubernetes), serta pengamanan SSL dan monitoring real-time.</p>
-          <ul>
-            <li>APIs: REST, GraphQL</li>
-            <li>Cloud: Netlify, Vercel, GitHub Pages</li>
-            <li>Automasi: CI/CD Pipeline</li>
-          </ul>
-        </div>
-        <div class="column highlight">
-          <h3>Materi Lanjutan</h3>
-          <ul>
-            <li>SEO & Aksesibilitas Web</li>
-            <li>Progressive Web Apps (PWA)</li>
-            <li>Animasi CSS & interaktif JS</li>
-            <li>Keamanan dasar: XSS, CSRF, HTTPS</li>
-          </ul>
-          <p>Ingin materi lebih lanjut atau contoh praktik? Konsultasi via kontak!</p>
-        </div>
-      `,
-      'server': `
-        <div class="column">
-          <h3>Web Server Masa Kini</h3>
-          <p>Server cloud (AWS, GCP, Azure), deployment otomatis, serta redundansi data. Dukungan CDN (Cloudflare) memastikan kecepatan global.</p>
-          <ul>
-            <li>Docker & Kubernetes</li>
-            <li>Monitoring: Grafana, Prometheus</li>
-            <li>Auto Scaling Server</li>
-          </ul>
-        </div>
-        <div class="column">
-          <h3>API & Security</h3>
-          <p>Integrasi REST API, GraphQL, JWT Authentication, SSL Encryption, serta firewall aplikasi (WAF) agar data selalu aman.</p>
-          <ul>
-            <li>Backup otomatis</li>
-            <li>Firewall & DDoS Protection</li>
-            <li>Error Monitoring: Sentry</li>
-          </ul>
-        </div>
-        <div class="column highlight">
-          <h3>Automasi DevOps</h3>
-          <p>CI/CD pipeline dengan GitHub Actions, Jenkins, verifikasi otomatis, rollback cepat. Status dashboard pantau server selalu aktif.</p>
-          <ul>
-            <li>GitHub Actions</li>
-            <li>Continuous Deployment</li>
-            <li>Realtime Alert & Status</li>
-          </ul>
-        </div>
-      `,
-      'news': `
-        <div class="column">
-          <h3>Info Terkini</h3>
-          <p>Login SIAKAD kini lebih cepat & aman. Pembayaran online tersedia, konsultasi dosen dapat dilakukan secara remote. Cek update di link <a href="https://univrab.ac.id/news" target="_blank">Berita UNIVRAB</a>.</p>
-        </div>
-        <div class="column">
-          <h3>Agenda Kegiatan</h3>
-          <ul>
-            <li>Pendaftaran Semester Genap: 20 Nov - 18 Jan</li>
-            <li>Pelatihan Web: 25 November</li>
-            <li>Webinar AI: Desember</li>
-          </ul>
-          <p class="info-block">Semua agenda dapat diakses online. Info detail via admin TI.</p>
-        </div>
-        <div class="column highlight">
-          <h3>Tips Produktif di Kampus</h3>
-          <ul>
-            <li>Update info SIAKAD rutin</li>
-            <li>Jadwalkan waktu belajar & lomba</li>
-            <li>Ikuti komunitas coding UNIVRAB</li>
-            <li>Konsultasi tugas web ke mentor</li>
-          </ul>
-        </div>
-      `,
-      'penugasan': `
-        <div class="column">
-          <h3>Tugas 1: Struktur Web Pribadi</h3>
-          <p>Buat web profil diri. Minimal: biodata, hobi, kontak, foto. Gunakan HTML5 semantik, responsive CSS.</p>
-        </div>
-        <div class="column">
-          <h3>Tugas 2: Desain Responsif</h3>
-          <p>Pakai CSS Grid/Flexbox, warna lembut, dan mobile-friendly. Uji desain pada smartphone & desktop.</p>
-        </div>
-        <div class="column highlight">
-          <h3>Tugas 3: Mini Proyek Akhir</h3>
-          <p>Bangun web tema bebas dengan HTML, CSS, JavaScript interaktif. Sertakan deployment ke GitHub Pages/cloud.</p>
-        </div>
-      `,
-      'kontak': `
-        <div class="column highlight">
-          <h3>Kontak Admin Prodi TI</h3>
-          <p><strong>WhatsApp:</strong> <a href="https://wa.me/628123456789" target="_blank">0812-3456-789</a><br>
-            <strong>Email:</strong> ti@univrab.ac.id<br>
-            <strong>Instagram:</strong> <a href="https://instagram.com/tiunivrab" target="_blank">@tiunivrab</a>
-          </p>
-        </div>
-        <div class="column">
-          <h3>Alamat Kampus</h3>
-          <p>Jl. Riau Ujung No. 73, Pekanbaru 28291<br>Telp: (0761) 38762<br><a href="https://univrab.ac.id" target="_blank">univrab.ac.id</a></p>
-        </div>
-        <div class="column">
-          <h3>Form Saran</h3>
-          <form id="feedback-form">
-            <input type="text" name="nama" placeholder="Nama Anda" required style="width:100%;padding:6px;border-radius:5px;border:1px solid #ccc;margin-bottom:7px;">
-            <input type="email" name="email" placeholder="Email Aktif" required style="width:100%;padding:6px;border-radius:5px;border:1px solid #ccc;margin-bottom:7px;">
-            <textarea name="pesan" placeholder="Saran / Kritik / Feedback" rows="3" required style="width:100%;padding:6px;border-radius:5px;border:1px solid #ccc;margin-bottom:7px;"></textarea>
-            <button type="submit" style="margin-top:7px;padding:7px 18px;background:var(--accent-color);color:#fff;font-weight:700;border:none;border-radius:4px;cursor:pointer">Kirim</button>
-          </form>
-          <div id="feedback-message" style="margin-top:9px;font-weight:500;"></div>
-        </div>
-      `
-    };
-
-    function showContent(element) {
-      const page = element.getAttribute('data-page');
-      const content = document.getElementById('main-content');
-      const links = document.querySelectorAll('nav a');
-      links.forEach(link => link.classList.remove('active'));
-      element.classList.add('active');
-      // Info news active
-      let showNewsBlock = page === 'news';
-      document.getElementById("news-block").style.display = showNewsBlock ? "block" : "none";
-      content.style.opacity = "0";
-      setTimeout(() => {
-        content.innerHTML = pageContent[page] || pageContent['profil'];
-        content.style.opacity = "1";
-      }, 250);
-    }
-
-    // Feedback form handler
-    document.addEventListener("DOMContentLoaded", () => {
-      showContent(document.querySelector("nav a.active"));
-      // Feedback
-      const form = document.getElementById('feedback-form');
-      if(form) {
-        form.onsubmit = (e) => {
-          e.preventDefault();
-          document.getElementById('feedback-message').innerHTML = 
-            '<span style="color:#7c3aed">Terima kasih atas saran Anda!</span>';
-          form.reset();
-        };
+      // Find the currently active link (should be 'profil' initially)
+      const initialActiveLink = document.querySelector(".nav-links a.active");
+      if (initialActiveLink) {
+        // Run showContent to load the correct initial content inside main-content
+        // The default content for the homepage (statistik, hero, dll.) already exists outside main-content,
+        // so we load the 'profil' content into the .page-section below it.
+        showContent(initialActiveLink);
       }
     });
   </script>
