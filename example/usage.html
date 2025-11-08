@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contoh Gambar Responsif</title>
+  <link rel="stylesheet" href="/assets/css/responsive-images.css">
+  <style>
+    /* gaya demo cepat */
+    .card { width: 90%; max-width: 800px; margin: 24px auto; border: 1px solid #ddd; padding: 12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Gambar responsif (skala proporsional)</h2>
+    <img src="/images/sample-large.jpg" alt="Contoh" class="img-responsive">
+  </div>
+
+  <div class="card">
+    <h2>Gambar cover dalam rasio tetap (16:9)</h2>
+    <div class="ratio-16-9">
+      <img src="/images/sample-large.jpg" alt="Contoh cover">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Gambar fullscreen (untuk hero)</h2>
+    <img src="/images/hero.jpg" alt="Hero" class="img-fullscreen">
+  </div>
+
+  <div class="card">
+    <h2>Optimasi: gunakan &lt;picture&gt; dan srcset</h2>
+    <picture>
+      <source media="(min-width:1200px)" srcset="/images/sample-1600.jpg">
+      <source media="(min-width:768px)" srcset="/images/sample-1200.jpg">
+      <img src="/images/sample-800.jpg" alt="Contoh srcset" class="img-responsive">
+    </picture>
+  </div>
+</body>
+</html>
