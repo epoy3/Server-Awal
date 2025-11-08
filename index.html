@@ -1,3 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universitas Abdurrab (UNIVRAB) - Beranda Resmi & SPADA</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* UNIVRAB Color Palette */
+    :root {
+      --univrab-red: #8C1C1E; /* Dominan Merah Marun/Cokelat Gelap */
+      --univrab-light-red: #A32629;
+      --univrab-bg-light: #f5f5f5;
+      --univrab-bg-dark: #3a1a1b;
+      --univrab-text-main: #222;
+      --univrab-text-light: #f5f5f5;
+      --univrab-text-accent: #8C1C1E;
+      --border-radius: 6px;
+      --shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    body {
+      background: var(--univrab-bg-light);
+      color: var(--univrab-text-main);
+      font-family: 'Nunito', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+    .top-bar {
+      background: var(--univrab-bg-dark);
+      color: var(--univrab-text-light);
+      font-size: 0.85rem;
+      padding: 4px 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+    .top-bar a { 
+      color: #f5f5f5; 
+      text-decoration: none; 
+      transition: color 0.2s;
+    }
+    .top-bar a:hover {
+        color: #ffc107;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      gap: 20px;
+    }
+    .logo-container { display: flex; align-items: center; }
+    .logo { width: 45px; height: auto; margin-right: 10px; }
+    .site-title { 
+      font-family: 'Roboto Slab', serif; 
+      font-size: 1.4rem; 
+      font-weight: 700; 
+      color: var(--univrab-text-accent); 
+    }
+    .nav-links { 
+      display: flex; 
+      list-style: none; 
+      margin: 0; 
+      padding: 0; 
+      gap: 20px; 
+      flex-wrap: wrap; /* Added for better mobile support */
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--univrab-text-main);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 5px 0;
+      border-bottom: 3px solid transparent;
+      transition: border-bottom 0.2s, color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--univrab-text-accent);
+      border-bottom: 3px solid var(--univrab-red);
+    }
+
+    /* Main Content Area */
+    .content-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    
+    /* Hero Section */
+    .hero-banner {
+      background: var(--univrab-bg-dark);
+      color: var(--univrab-text-light);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .hero-banner h1 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      font-weight: 800;
+      color: #ffe082;
+    }
+    .hero-banner p { font-size: 1.1rem; margin-bottom: 10px; }
+    .cta-button {
+      display: inline-block;
+      background: var(--univrab-light-red);
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .cta-button:hover { background: var(--univrab-red); }
+
+    /* Statistic Blocks */
+    .statistic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
     }
     .stat-block {
       background: var(--univrab-red);
@@ -30,7 +158,7 @@
       border-bottom: 2px solid #eee;
       padding-bottom: 10px;
       margin-top: 0;
-      width: 100%; /* Make heading full width */
+      width: 100%;
     }
     /* Feature Card Styles for SPADA */
     .feature-card {
@@ -38,7 +166,7 @@
         border: 1px solid #ddd;
         border-radius: var(--border-radius);
         padding: 15px;
-        flex: 1 1 calc(33.333% - 15px); /* 3 cards per row, with gap */
+        flex: 1 1 calc(33.333% - 15px);
         min-width: 250px;
         box-shadow: 0 1px 5px rgba(0,0,0,0.05);
         transition: border-color 0.3s;
@@ -64,6 +192,7 @@
         margin-top: 15px;
         font-size: 0.95rem;
     }
+    .info-block-content strong { color: #8C1C1E; } /* Highlight strong text */
 
     /* Footer */
     .footer {
@@ -80,7 +209,8 @@
       .main-nav { flex-wrap: wrap; justify-content: center; }
       .nav-links { justify-content: center; margin-top: 10px; gap: 15px; }
       .site-title { font-size: 1.2rem; }
-      .feature-card { flex: 1 1 100%; } /* Single column on small screens */
+      .feature-card { flex: 1 1 100%; }
+      .hero-banner > div { width: 100% !important; float: none !important; text-align: left !important; margin-top: 10px; }
     }
     @media (max-width: 600px) {
       .top-bar { display: none; }
@@ -89,19 +219,21 @@
 </head>
 <body>
   <div class="top-bar">
-    <a href="#">HUBUNGI KAMI</a> | <a href="#">HUMAS@UNIVRAB.AC.ID</a>
+    <a href="mailto:humas@univrab.ac.id">HUBUNGI KAMI</a> | HUMAS@UNIVRAB.AC.ID
   </div>
   <header>
     <div class="main-nav">
       <div class="logo-container">
-        <img src="https://upload.wikimedia.org/wikipedia/id/9/94/Logo_UNIVRAB.png" alt="UNIVRAB Logo" class="logo" />
+        <img src="https://media.neliti.com/media/organisations/logo-None-universitas-abdurrab-8a3f2db3.png" alt="UNIVRAB Logo" class="logo" />
         <span class="site-title">UNIVERSITAS ABDURRAB</span>
       </div>
       <ul class="nav-links">
         <li><a href="#" class="active" data-page="profil" onclick="showContent(this)">PROFIL</a></li>
         <li><a href="#" data-page="penerimaan" onclick="showContent(this)">PENERIMAAN</a></li>
         <li><a href="#" data-page="perkuliahan" onclick="showContent(this)">PERKULIAHAN</a></li>
-        <li><a href="#" data-page="spada" onclick="showContent(this)">SPADA 🌐</a></li> <li><a href="#" data-page="penelitian" onclick="showContent(this)">PENELITIAN & PUBLIKASI</a></li>
+        <li><a href="#" data-page="spada" onclick="showContent(this)">SPADA 🌐</a></li>
+        <li><a href="#" data-page="materi" onclick="showContent(this)">MATERI</a></li>
+        <li><a href="#" data-page="penelitian" onclick="showContent(this)">PENELITIAN & PUBLIKASI</a></li>
         <li><a href="#" data-page="civitas" onclick="showContent(this)">CIVITAS</a></li>
       </ul>
     </div>
@@ -109,19 +241,22 @@
 
   <div class="content-container">
     <div class="hero-banner">
-      <div style="float: right; width: 45%; text-align: right; background: rgba(0,0,0,0.1); padding: 10px; border-radius: 5px;">
-        <span style="font-size: 1.5rem; font-weight: 700;">09 Juni 2025</span><br>
-        <small>Sertifikat Akreditasi: **UNGGUL**</small>
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 50%;">
+              <h1>Kedokteran Raih Akreditasi UNGGUL</h1>
+              <p>Universitas Abdurrab Gelar Doa Bersama dan Syukuran atas pencapaian akreditasi unggul.</p>
+          </div>
+          <div style="text-align: right; background: rgba(0,0,0,0.1); padding: 10px; border-radius: 5px; margin-left: 10px;">
+              <span style="font-size: 1.5rem; font-weight: 700;">09 Jun 2025</span><br>
+              <small>Sertifikat Akreditasi: **UNGGUL**</small>
+          </div>
       </div>
-      <h1>Kedokteran Raih Akreditasi UNGGUL</h1>
-      <p>Universitas Abdurrab Gelar Doa Bersama dan Syukuran atas pencapaian akreditasi unggul.</p>
-      <div style="clear: both;"></div>
     </div>
 
     <div style="background: #a32629; color: #fff; text-align: center; padding: 30px 20px; border-radius: var(--border-radius); margin-bottom: 20px; box-shadow: var(--shadow);">
       <h2 style="color: #fff; margin: 0 0 10px 0; font-size: 1.8rem; font-weight: 700;">DAFTAR SEKARANG!</h2>
       <p style="margin: 0 0 15px 0; font-size: 1.1rem;">Bergabunglah dengan ribuan mahasiswa yang telah memilih masa depan terbaik mereka.</p>
-      <a href="#" class="cta-button" style="background: #ffc107; color: var(--univrab-text-accent);">KLIK DI SINI UNTUK PENDAFTARAN →</a>
+      <a href="https://admisi.univrab.ac.id/" class="cta-button" style="background: #ffc107; color: var(--univrab-text-accent);" target="_blank">KLIK DI SINI UNTUK PENDAFTARAN →</a>
     </div>
 
     <h2 style="text-align: center; color: var(--univrab-text-accent); margin-top: 30px; font-weight: 800;">UNIVERSITAS ABDURRAB</h2>
@@ -149,10 +284,7 @@
     </div>
     
     <div class="page-section" id="main-content">
-      <h2>Sekilas Tentang UNIVRAB</h2>
-      <p>Universitas Abdurrab adalah institusi pendidikan tinggi yang berlokasi di Pekanbaru, Riau. Berdiri sejak tahun 2005, UNIVRAB berkomitmen mencetak lulusan yang unggul, berakhlak mulia, dan berdaya saing global dengan fokus pada pengembangan riset dan teknologi islami.</p>
-      <a href="#" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;">Baca Selengkapnya</a>
-    </div>
+      </div>
 
   </div>
 
@@ -166,19 +298,17 @@
       'profil': `
         <h2>Profil Singkat</h2>
         <p>Universitas Abdurrab berdiri sejak 2005. Kami berkomitmen pada pendidikan islami, inovasi teknologi, dan mencetak generasi yang mampu bersaing di era digital. Kampus kami memiliki 4 Fakultas dan 19 Program Studi dengan akreditasi yang terjamin.</p>
+        <a href="#" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;">Baca Selengkapnya</a>
       `,
       'penerimaan': `
         <h2>Penerimaan Mahasiswa Baru</h2>
         <p>Pendaftaran gelombang baru telah dibuka. Kunjungi laman resmi PMB untuk informasi jalur masuk, syarat, dan jadwal pendaftaran.</p>
-        <p><a href="#" class="cta-button" style="background: #ffc107; color: var(--univrab-text-accent);">Cek Syarat Pendaftaran</a></p>
+        <p><a href="https://admisi.univrab.ac.id/" class="cta-button" style="background: #ffc107; color: var(--univrab-text-accent);" target="_blank">Kunjungi Portal Pendaftaran</a></p>
       `,
       'perkuliahan': `
         <h2>Informasi Akademik</h2>
         <p>Informasi KRS, jadwal kuliah, kalender akademik, dan SIAKAD terbaru dapat diakses melalui portal mahasiswa. Pastikan data diri selalu terverifikasi.</p>
       `,
-      // =========================================================
-      // FITUR SPADA BARU
-      // =========================================================
       'spada': `
         <h2>SPADA UNIVRAB: Sistem Pembelajaran Daring 🌐</h2>
         <div class="feature-card">
@@ -206,12 +336,9 @@
             <p>Dapatkan pemberitahuan langsung melalui email atau notifikasi *in-app* untuk tugas baru atau pembaruan nilai.</p>
         </div>
         <div class="info-block-content" style="width: 100%;">
-            **Peringatan:** Pastikan Anda menggunakan akun **SIAKAD** yang aktif untuk login ke SPADA. Gunakan browser modern untuk pengalaman terbaik.
+            <strong>Peringatan:</strong> Pastikan Anda menggunakan akun **SIAKAD** yang aktif untuk login ke SPADA. Gunakan browser modern untuk pengalaman terbaik.
         </div>
       `,
-      // =========================================================
-      // MATERI WEB DITINGKATKAN (dari permintaan sebelumnya)
-      // =========================================================
       'materi': `
         <h2>Materi Web Modern & Infrastruktur 💻</h2>
         <div class="feature-card" style="flex: 1 1 45%;">
@@ -233,11 +360,9 @@
           </ul>
         </div>
         <div class="info-block-content" style="width: 100%;">
-            **Info Lanjutan:** Pelajari framework modern (React/Vue) setelah menguasai dasar-dasar ini.
+            <strong>Info Lanjutan:</strong> Pelajari framework modern (React/Vue) setelah menguasai dasar-dasar ini.
         </div>
       `,
-      // =========================================================
-      
       'penelitian': `
         <h2>Riset dan Publikasi</h2>
         <p>UNIVRAB aktif dalam penelitian ilmiah dan pengabdian masyarakat. Kami mendorong civitas akademika untuk terus berinovasi dan mempublikasikan hasil riset ke jurnal nasional dan internasional.</p>
@@ -261,19 +386,16 @@
       content.innerHTML = pageContent[page] || pageContent['profil'];
       
       // Scroll to content section smoothly
-      if (page !== 'profil') { // Only scroll if navigating away from default
+      // Hanya scroll jika berada di bagian atas (bukan scroll dari tengah-tengah page content)
+      if (window.scrollY < 300) { 
           window.scrollTo({ top: content.offsetTop - 70, behavior: 'smooth' });
       }
     }
 
-    // Set initial content to profil
+    // Set initial content to profil upon loading
     document.addEventListener("DOMContentLoaded", () => {
-      // Find the currently active link (should be 'profil' initially)
       const initialActiveLink = document.querySelector(".nav-links a.active");
       if (initialActiveLink) {
-        // Run showContent to load the correct initial content inside main-content
-        // The default content for the homepage (statistik, hero, dll.) already exists outside main-content,
-        // so we load the 'profil' content into the .page-section below it.
         showContent(initialActiveLink);
       }
     });
