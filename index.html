@@ -265,6 +265,7 @@
         margin-bottom: 5px;
      }
 
+
     /* YouTube Grid */
     .youtube-grid {
         display: grid;
@@ -384,7 +385,7 @@
         <li><a href="#" class="active" data-page="profil" onclick="showContent(this)">PROFIL</a></li>
         <li><a href="#" data-page="penerimaan" onclick="showContent(this)">PENERIMAAN</a></li>
         <li><a href="#" data-page="perkuliahan" onclick="showContent(this)">PERKULIAHAN</a></li>
-        <li><a href="#" data-page="spada" onclick="showContent(this)">SPADA 🌐</a></li>
+        <li><a href="https://spada.univrab.ac.id/" target="_blank">SPADA 🌐</a></li>
         <li><a href="#" data-page="portal_dokumen" onclick="showContent(this)">PORTAL & DOKUMEN</a></li>
         <li><a href="https://jurnal.univrab.ac.id/" target="_blank">PENELITIAN & PUBLIKASI</a></li>
         <li><a href="https://kemahasiswaan.univrab.ac.id/" target="_blank">CIVITAS</a></li>
@@ -437,7 +438,8 @@
     </div>
     
     <div class="page-section clearfix" id="main-content">
-      </div>
+      
+</div>
 
     <h2 style="text-align: center; color: var(--univrab-text-accent); margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 10px;">Liputan & Kegiatan Kampus</h2>
     <div class="youtube-grid">
@@ -460,10 +462,11 @@
   </footer>
 
   <script>
+    // PERUBAHAN 2: URL Gambar diperbarui dengan link yang diminta
     const imageUrls = [
-      "https://share.google/images/yOV3s6gQP5wqU8Kyl",
-      "https://share.google/images/8bcS9xhfiuBtFeh4c",
-      "https://share.google/images/2Q2UaPLPT1W1nVCmz"
+      "https://univrab.ac.id/uploads/Univrab.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXqnbzpiFRT3MUIZsPDhWN1QKjs-wFuH5sFA&usqp=CAU",
+      "https://pendidikan-dokter.univrab.ac.id/media_library/image_sliders/fb572b6c35d2a3c136132568b85a2ea8.png"
     ];
 
     function getRandomImage() {
@@ -477,7 +480,8 @@
         <h2>Profil Singkat</h2>
         <img src="${getRandomImage()}" alt="Kampus Abdurrab 1" class="content-image align-right" style="animation-delay: 0.1s;">
         <p>Universitas Abdurrab berdiri sejak 2005. Kami berkomitmen pada pendidikan islami, inovasi teknologi, dan mencetak generasi yang mampu bersaing di era digital. Kampus kami memiliki 4 Fakultas dan 15 Program Studi dengan akreditasi yang terjamin.</p>
-        <p class="clearfix"></p> <a href="https://univrab.ac.id/" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;" target="_blank">Baca Selengkapnya</a>
+        <p class="clearfix"></p> 
+<a href="https://univrab.ac.id/" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;" target="_blank">Baca Selengkapnya</a>
 
         <div style="width: 100%; margin-top: 25px;">
             <img src="${getRandomImage()}" alt="Gedung Abdurrab" class="content-image align-left" style="animation-delay: 0.3s;">
@@ -695,6 +699,7 @@
         </div>
         <div class="info-block-content" style="width: 100%;">
             <strong>Peringatan:</strong> Pastikan Anda menggunakan akun **SIAKAD** yang aktif untuk login ke SPADA. Gunakan browser modern untuk pengalaman terbaik.
+            <p style="margin-top: 10px;"><a href="https://spada.univrab.ac.id/" target="_blank" class="cta-button" style="background: var(--univrab-red); color: #fff; padding: 5px 10px; font-size: 0.9rem;">Akses SPADA →</a></p>
         </div>
       `,
       // Konten PORTAL & DOKUMEN diperbarui dengan Gambar
@@ -732,6 +737,11 @@
       const content = document.getElementById('main-content');
       const links = document.querySelectorAll('.nav-links a');
       
+      // Jika link adalah eksternal (punya target="_blank"), jangan lakukan navigasi internal
+      if (element.getAttribute('target') === '_blank') {
+          return; 
+      }
+
       links.forEach(link => link.classList.remove('active'));
       element.classList.add('active');
       
@@ -761,3 +771,4 @@
   </script>
 </body>
 </html>
+        
