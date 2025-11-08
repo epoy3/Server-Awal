@@ -160,6 +160,19 @@
       margin-top: 0;
       width: 100%;
     }
+     .page-section h3 {
+        color: var(--univrab-text-accent);
+        font-size: 1.3rem;
+        margin-top: 10px;
+     }
+     .page-section ul {
+        list-style: disc;
+        padding-left: 25px;
+     }
+     .page-section ul li {
+        margin-bottom: 8px;
+     }
+
     /* Feature Card Styles for SPADA / PMB Program List */
     .feature-card {
         background: #f8f8f8;
@@ -230,6 +243,28 @@
         font-weight: 600;
         color: var(--univrab-text-main);
     }
+    
+    .program-list-section {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .program-list-section h3 {
+        font-weight: 700; 
+        color: var(--univrab-red);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+     .program-list-section ul {
+        list-style: disc;
+        padding-left: 20px;
+        margin-top: 10px;
+     }
+     .program-list-section li {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+     }
+
 
     /* YouTube Grid */
     .youtube-grid {
@@ -298,8 +333,8 @@
         <li><a href="#" data-page="perkuliahan" onclick="showContent(this)">PERKULIAHAN</a></li>
         <li><a href="#" data-page="spada" onclick="showContent(this)">SPADA 🌐</a></li>
         <li><a href="#" data-page="portal_dokumen" onclick="showContent(this)">PORTAL & DOKUMEN</a></li>
-        <li><a href="#" data-page="penelitian" onclick="showContent(this)">PENELITIAN & PUBLIKASI</a></li>
-        <li><a href="#" data-page="civitas" onclick="showContent(this)">CIVITAS</a></li>
+        <li><a href="https://jurnal.univrab.ac.id/" target="_blank">PENELITIAN & PUBLIKASI</a></li>
+        <li><a href="https://kemahasiswaan.univrab.ac.id/" target="_blank">CIVITAS</a></li>
       </ul>
     </div>
   </header>
@@ -373,10 +408,24 @@
 
   <script>
     const pageContent = {
+      // Konten PROFIL diperbarui dengan Visi & Misi
       'profil': `
         <h2>Profil Singkat</h2>
         <p>Universitas Abdurrab berdiri sejak 2005. Kami berkomitmen pada pendidikan islami, inovasi teknologi, dan mencetak generasi yang mampu bersaing di era digital. Kampus kami memiliki 4 Fakultas dan 15 Program Studi dengan akreditasi yang terjamin.</p>
         <a href="https://univrab.ac.id/" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;" target="_blank">Baca Selengkapnya</a>
+
+        <div style="width: 100%; margin-top: 25px;">
+            <h3>Visi</h3>
+            <p style="font-style: italic;">"Menjadi Universitas Islam Berbasis Riset yang Unggul di Bidang Sains dan Teknologi di Wilayah ASEAN pada Tahun 2035."</p>
+            
+            <h3>Misi</h3>
+            <ul>
+                <li>Menyelenggarakan pendidikan tinggi yang berkualitas dan relevan dengan tantangan global berdasarkan nilai-nilai Islam.</li>
+                <li>Melaksanakan penelitian inovatif dan publikasi ilmiah bereputasi di tingkat nasional dan internasional.</li>
+                <li>Menyelenggarakan pengabdian kepada masyarakat berbasis hasil riset untuk meningkatkan kesejahteraan.</li>
+                <li>Menerapkan tata kelola universitas yang baik (Good University Governance) dan mengimplementasikan nilai-nilai Rabbani, Amanah, dan Beradab.</li>
+            </ul>
+        </div>
       `,
       'penerimaan': `
         <div style="display:flex; gap: 20px; flex-wrap: wrap;">
@@ -497,32 +546,51 @@
           </div>
         </div>
       `,
+      // Konten PERKULIAHAN diperbarui dengan D3, D4, dan Profesi
       'perkuliahan': `
         <h2>Informasi Akademik & Program Studi</h2>
         <div class="info-block-content" style="width: 100%; margin-bottom: 20px;">
             <strong>Akses Cepat Portal Mahasiswa:</strong> 
             <a href="https://siakad.univrab.ac.id/" target="_blank" class="cta-button" style="background: #007bff; color: #fff; padding: 5px 10px; font-size: 0.9rem; margin-left: 10px;">LOGIN SIAKAD →</a>
         </div>
+
+        <div class="feature-card" style="flex: 1 1 100%; background-color: var(--univrab-bg-dark); color: white;">
+            <h3 style="color: #ffe082; justify-content: center;">Program Unggulan: Fakultas Kedokteran</h3>
+            <p style="text-align: center; color: #f0f0f0;">Menghasilkan dokter muslim yang profesional, berintegritas, dan mengabdi pada kemanusiaan dengan nilai-nilai Rabbani, Amanah, dan Beradab.</p>
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="https://pendidikan-dokter.univrab.ac.id/" target="_blank" class="cta-button" style="background: #ffc107; color: var(--univrab-text-accent);">Kunjungi Website Kedokteran →</a>
+            </p>
+        </div>
         
         <h3>Program Studi Sarjana (S1)</h3>
         <ul class="program-list">
+            <li>S1 FARMASI</li>
             <li>S1 FISIOTERAPI</li>
             <li>S1 PSIKOLOGI</li>
             <li>S1 TEKNIK SIPIL</li>
-            <li>S1 BISNIS DIGITAL</li>
             <li>S1 TEKNIK INFORMATIKA</li>
+            <li>S1 BISNIS DIGITAL</li>
             <li>S1 ILMU KOMUNIKASI</li>
             <li>S1 HUBUNGAN INTERNASIONAL</li>
             <li>S1 ILMU PEMERINTAHAN</li>
-            <li>S1 KEBIDANAN</li>
-            <li>S1 FARMASI</li>
+            <li>S1 EKONOMI ISLAM (STEI)</li>
         </ul>
         
-        <div style="margin-top: 30px; width: 100%;">
-            <h3>Program Studi Lainnya</h3>
-            <p style="font-weight: 700; color: var(--univrab-red);">PROGRAM STUDI D3 dan D4</p>
-            <p style="font-weight: 700; color: var(--univrab-red);">PROFESI</p>
-            <p>Informasi detail program studi dapat dilihat di portal utama UNIVRAB.</p>
+        <div class="program-list-section">
+            <h3>Program Studi Vokasi (D3 & D4)</h3>
+            <ul>
+                <li>D3 KEPERAWATAN</li>
+                <li>D3 ANALIS KESEHATAN (TLM)</li>
+                <li>D4 TEKNOLOGI LABORATORIUM MEDIS (TLM)</li>
+            </ul>
+        </div>
+        
+        <div class="program-list-section">
+            <h3>Program Studi Profesi</h3>
+            <ul>
+                <li>PROFESI DOKTER</li>
+                <li>PROFESI BIDAN</li>
+            </ul>
         </div>
       `,
       'spada': `
@@ -564,23 +632,17 @@
             <p style="margin-top: 15px; color: #555;">(Mengarah ke halaman login: portal.univrab.ac.id)</p>
         </div>
       `,
+      // Konten PENELITIAN diperbarui menjadi kesimpulan
       'penelitian': `
         <h2>Riset dan Publikasi Ilmiah</h2>
-        <p>UNIVRAB aktif dalam penelitian ilmiah dan mendorong publikasi hasil riset ke jurnal nasional dan internasional. Seluruh data dan jurnal tersedia di laman resmi publikasi.</p>
-        <div class="feature-card" style="flex: 1 1 100%; text-align: center; padding: 30px; background: #e0f7fa;">
-            <h3 style="justify-content: center;">Akses Jurnal Ilmiah UNIVRAB</h3>
-            <a href="https://jurnal.univrab.ac.id/" target="_blank" class="cta-button" style="background: #00bcd4;">KUNJUNGI PORTAL JURNAL →</a>
-            <p style="margin-top: 15px; color: #555;">(Mengarah ke jurnal.univrab.ac.id)</p>
-        </div>
+        <p>Universitas Abdurrab berkomitmen untuk menjadi pusat unggulan dalam penelitian dan publikasi ilmiah. Kami secara aktif mendorong seluruh civitas akademika, baik dosen maupun mahasiswa, untuk terlibat dalam kegiatan riset inovatif yang berdampak bagi masyarakat.</p>
+        <p>Fokus kami adalah menghasilkan karya ilmiah berkualitas yang dipublikasikan di jurnal nasional terakreditasi dan jurnal internasional bereputasi. Untuk melihat koleksi lengkap publikasi dan jurnal kami, silakan kunjungi portal jurnal resmi kami melalui tautan di navigasi atas.</p>
       `,
+      // Konten CIVITAS diperbarui menjadi kesimpulan
       'civitas': `
-        <h2>Layanan Kemahasiswaan & Organisasi</h2>
-        <p>Portal ini berisi informasi detail mengenai kegiatan kemahasiswaan, beasiswa, organisasi, dan layanan pendukung lainnya. Pastikan Anda mengakses laman resmi untuk detail yang akurat.</p>
-        <div class="feature-card" style="flex: 1 1 100%; text-align: center; padding: 30px; background: #e8f5e9;">
-            <h3 style="justify-content: center;">Akses Portal Kemahasiswaan</h3>
-            <a href="https://kemahasiswaan.univrab.ac.id/" target="_blank" class="cta-button" style="background: #4CAF50;">KUNJUNGI PORTAL CIVITAS →</a>
-            <p style="margin-top: 15px; color: #555;">(Mengarah ke kemahasiswaan.univrab.ac.id)</p>
-        </div>
+        <h2>Civitas & Kemahasiswaan</h2>
+        <p>Civitas akademika adalah jantung dari Universitas Abdurrab. Kami menyediakan lingkungan kampus yang suportif dan kondusif untuk pengembangan diri, baik secara akademik maupun non-akademik.</p>
+        <p>Melalui Portal Kemahasiswaan, kami mengelola berbagai layanan, termasuk informasi beasiswa, Unit Kegiatan Mahasiswa (UKM), program pengembangan karir, dan layanan konseling. Silakan kunjungi portal kemahasiswaan kami melalui tautan di navigasi atas untuk informasi lebih lanjut.</p>
       `,
       'default': `<h2>Selamat Datang</h2><p>Selamat datang di halaman resmi Universitas Abdurrab.</p>`
     };
@@ -588,9 +650,13 @@
     function showContent(element) {
       const page = element.getAttribute('data-page');
       const content = document.getElementById('main-content');
+      // Menargetkan semua link di navigasi, BUKAN hanya yang internal
       const links = document.querySelectorAll('.nav-links a');
       
+      // Hapus 'active' dari SEMUA link navigasi
       links.forEach(link => link.classList.remove('active'));
+      
+      // Tambahkan 'active' HANYA ke elemen yang diklik (yang memanggil fungsi ini)
       element.classList.add('active');
       
       // Mengubah innerHTML
