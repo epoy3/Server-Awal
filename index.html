@@ -265,7 +265,6 @@
         margin-bottom: 5px;
      }
 
-
     /* YouTube Grid */
     .youtube-grid {
         display: grid;
@@ -292,6 +291,55 @@
         border: 0;
     }
 
+    /* Custom Styles for Images in Content */
+    .content-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        margin: 15px 0; /* Memberi jarak atas dan bawah */
+        box-shadow: var(--shadow);
+        display: block; /* Agar bisa pakai margin auto untuk tengah */
+        opacity: 0; /* Start hidden for fade-in */
+        transform: translateY(20px); /* Start slightly below for slide-up */
+        animation: fadeInSlideUp 0.8s ease-out forwards; /* Animation */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover */
+    }
+    .content-image.align-left {
+        float: left;
+        margin-right: 20px;
+        width: 40%; /* Contoh ukuran */
+        max-width: 300px;
+    }
+    .content-image.align-right {
+        float: right;
+        margin-left: 20px;
+        width: 40%; /* Contoh ukuran */
+        max-width: 300px;
+    }
+    .content-image:hover {
+        transform: translateY(0px) scale(1.02); /* Slight zoom and no slide-up on hover */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+    }
+
+    /* Clearfix for floated images */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     /* Footer */
     .footer {
       background: var(--univrab-bg-dark);
@@ -311,6 +359,11 @@
       .hero-banner > div > div { flex: 1 1 100% !important; margin: 5px 0 !important; text-align: left !important; }
       .program-list { columns: 1; }
       .program-grid { grid-template-columns: 1fr; }
+      .content-image.align-left, .content-image.align-right {
+          float: none;
+          margin: 15px auto;
+          width: 80%;
+      }
     }
     @media (max-width: 600px) {
       .top-bar { display: none; }
@@ -383,7 +436,7 @@
       </div>
     </div>
     
-    <div class="page-section" id="main-content">
+    <div class="page-section clearfix" id="main-content">
       </div>
 
     <h2 style="text-align: center; color: var(--univrab-text-accent); margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 10px;">Liputan & Kegiatan Kampus</h2>
@@ -407,14 +460,27 @@
   </footer>
 
   <script>
+    const imageUrls = [
+      "https://share.google/images/yOV3s6gQP5wqU8Kyl",
+      "https://share.google/images/8bcS9xhfiuBtFeh4c",
+      "https://share.google/images/2Q2UaPLPT1W1nVCmz"
+    ];
+
+    function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+        return imageUrls[randomIndex];
+    }
+
     const pageContent = {
-      // Konten PROFIL diperbarui dengan Visi & Misi
+      // Konten PROFIL diperbarui dengan Visi & Misi dan Gambar
       'profil': `
         <h2>Profil Singkat</h2>
+        <img src="${getRandomImage()}" alt="Kampus Abdurrab 1" class="content-image align-right" style="animation-delay: 0.1s;">
         <p>Universitas Abdurrab berdiri sejak 2005. Kami berkomitmen pada pendidikan islami, inovasi teknologi, dan mencetak generasi yang mampu bersaing di era digital. Kampus kami memiliki 4 Fakultas dan 15 Program Studi dengan akreditasi yang terjamin.</p>
-        <a href="https://univrab.ac.id/" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;" target="_blank">Baca Selengkapnya</a>
+        <p class="clearfix"></p> <a href="https://univrab.ac.id/" class="cta-button" style="background: var(--univrab-red); margin-top: 15px;" target="_blank">Baca Selengkapnya</a>
 
         <div style="width: 100%; margin-top: 25px;">
+            <img src="${getRandomImage()}" alt="Gedung Abdurrab" class="content-image align-left" style="animation-delay: 0.3s;">
             <h3>Visi</h3>
             <p style="font-style: italic;">"Menjadi Universitas Islam Berbasis Riset yang Unggul di Bidang Sains dan Teknologi di Wilayah ASEAN pada Tahun 2035."</p>
             
@@ -427,6 +493,7 @@
             </ul>
         </div>
       `,
+      // Konten PENERIMAAN diperbarui dengan Gambar
       'penerimaan': `
         <div style="display:flex; gap: 20px; flex-wrap: wrap;">
           <div style="flex: 3; min-width: 60%;">
@@ -438,6 +505,7 @@
             <p>Assalamu’alaikum Wr Wb..</p>
             <p style="font-weight: 700; color: var(--univrab-light-red);">JADI.. BURUAN DAFTAR YA GUYS KARENA KUOTA SETIAP PROGRAM STUDINYA TERBATAS LOH ..</p>
             
+            <img src="${getRandomImage()}" alt="Pendaftaran Mahasiswa Baru" class="content-image" style="animation-delay: 0.2s;">
             <h3>Tentang Universitas Abdurrab</h3>
             <p>Universitas Abdurrab adalah Salah Satu Perguruan Tinggi Terbaik Di Riau. Bersama Universitas Abdurrab, Kamu akan menemukan pengalaman belajar yang unik yang memadukan ilmu pengetahuan dengan pelaksanaan nilai-nilai keislaman (Rabbani, Amanah, dan Beradab) untuk membentuk karakter yang berintegritas, serta didukung dengan lingkungan pembelajaran yang kondusif untuk mengembangkan potensi Kamu.</p>
 
@@ -546,7 +614,7 @@
           </div>
         </div>
       `,
-      // Konten PERKULIAHAN diperbarui dengan D3, D4, dan Profesi
+      // Konten PERKULIAHAN diperbarui dengan D3, D4, dan Profesi serta Gambar
       'perkuliahan': `
         <h2>Informasi Akademik & Program Studi</h2>
         <div class="info-block-content" style="width: 100%; margin-bottom: 20px;">
@@ -563,6 +631,7 @@
         </div>
         
         <h3>Program Studi Sarjana (S1)</h3>
+        <img src="${getRandomImage()}" alt="Mahasiswa Belajar" class="content-image align-left" style="animation-delay: 0.1s;">
         <ul class="program-list">
             <li>S1 FARMASI</li>
             <li>S1 FISIOTERAPI</li>
@@ -575,15 +644,18 @@
             <li>S1 ILMU PEMERINTAHAN</li>
             <li>S1 EKONOMI ISLAM (STEI)</li>
         </ul>
-        
+        <p class="clearfix"></p>
+
         <div class="program-list-section">
             <h3>Program Studi Vokasi (D3 & D4)</h3>
+            <img src="${getRandomImage()}" alt="Laboratorium" class="content-image align-right" style="animation-delay: 0.3s;">
             <ul>
                 <li>D3 KEPERAWATAN</li>
                 <li>D3 ANALIS KESEHATAN (TLM)</li>
                 <li>D4 TEKNOLOGI LABORATORIUM MEDIS (TLM)</li>
             </ul>
         </div>
+        <p class="clearfix"></p>
         
         <div class="program-list-section">
             <h3>Program Studi Profesi</h3>
@@ -593,8 +665,10 @@
             </ul>
         </div>
       `,
+      // Konten SPADA diperbarui dengan Gambar
       'spada': `
         <h2>SPADA UNIVRAB: Sistem Pembelajaran Daring 🌐</h2>
+        <img src="${getRandomImage()}" alt="Pembelajaran Daring" class="content-image" style="animation-delay: 0.1s;">
         <div class="feature-card">
             <h3>📝 Tugas & Kuis Online</h3>
             <p>Mahasiswa dapat mengunggah tugas dan mengikuti kuis/ujian mandiri secara terstruktur sesuai batas waktu yang ditentukan dosen.</p>
@@ -623,26 +697,32 @@
             <strong>Peringatan:</strong> Pastikan Anda menggunakan akun **SIAKAD** yang aktif untuk login ke SPADA. Gunakan browser modern untuk pengalaman terbaik.
         </div>
       `,
+      // Konten PORTAL & DOKUMEN diperbarui dengan Gambar
       'portal_dokumen': `
         <h2>Portal & Dokumen (Akses Cepat)</h2>
         <p>Portal ini menyediakan akses ke berbagai sistem dan dokumen penting di lingkungan Universitas Abdurrab.</p>
+        <img src="${getRandomImage()}" alt="Portal Dosen Mahasiswa" class="content-image" style="animation-delay: 0.1s;">
         <div class="feature-card" style="flex: 1 1 100%; text-align: center; padding: 30px;">
             <h3 style="justify-content: center;">Akses Portal Login Mahasiswa/Dosen</h3>
             <a href="https://portal.univrab.ac.id/index.php/auth" target="_blank" class="cta-button" style="background: var(--univrab-red);">MASUK KE PORTAL UNIVRAB →</a>
             <p style="margin-top: 15px; color: #555;">(Mengarah ke halaman login: portal.univrab.ac.id)</p>
         </div>
       `,
-      // Konten PENELITIAN diperbarui menjadi kesimpulan
+      // Konten PENELITIAN (sudah jadi kesimpulan, tambahkan gambar)
       'penelitian': `
         <h2>Riset dan Publikasi Ilmiah</h2>
+        <img src="${getRandomImage()}" alt="Penelitian Kampus" class="content-image align-left" style="animation-delay: 0.1s;">
         <p>Universitas Abdurrab berkomitmen untuk menjadi pusat unggulan dalam penelitian dan publikasi ilmiah. Kami secara aktif mendorong seluruh civitas akademika, baik dosen maupun mahasiswa, untuk terlibat dalam kegiatan riset inovatif yang berdampak bagi masyarakat.</p>
         <p>Fokus kami adalah menghasilkan karya ilmiah berkualitas yang dipublikasikan di jurnal nasional terakreditasi dan jurnal internasional bereputasi. Untuk melihat koleksi lengkap publikasi dan jurnal kami, silakan kunjungi portal jurnal resmi kami melalui tautan di navigasi atas.</p>
+        <p class="clearfix"></p>
       `,
-      // Konten CIVITAS diperbarui menjadi kesimpulan
+      // Konten CIVITAS (sudah jadi kesimpulan, tambahkan gambar)
       'civitas': `
         <h2>Civitas & Kemahasiswaan</h2>
+        <img src="${getRandomImage()}" alt="Kegiatan Mahasiswa" class="content-image align-right" style="animation-delay: 0.1s;">
         <p>Civitas akademika adalah jantung dari Universitas Abdurrab. Kami menyediakan lingkungan kampus yang suportif dan kondusif untuk pengembangan diri, baik secara akademik maupun non-akademik.</p>
         <p>Melalui Portal Kemahasiswaan, kami mengelola berbagai layanan, termasuk informasi beasiswa, Unit Kegiatan Mahasiswa (UKM), program pengembangan karir, dan layanan konseling. Silakan kunjungi portal kemahasiswaan kami melalui tautan di navigasi atas untuk informasi lebih lanjut.</p>
+        <p class="clearfix"></p>
       `,
       'default': `<h2>Selamat Datang</h2><p>Selamat datang di halaman resmi Universitas Abdurrab.</p>`
     };
@@ -650,17 +730,20 @@
     function showContent(element) {
       const page = element.getAttribute('data-page');
       const content = document.getElementById('main-content');
-      // Menargetkan semua link di navigasi, BUKAN hanya yang internal
       const links = document.querySelectorAll('.nav-links a');
       
-      // Hapus 'active' dari SEMUA link navigasi
       links.forEach(link => link.classList.remove('active'));
-      
-      // Tambahkan 'active' HANYA ke elemen yang diklik (yang memanggil fungsi ini)
       element.classList.add('active');
       
       // Mengubah innerHTML
       content.innerHTML = pageContent[page] || pageContent['profil'];
+
+      // Reset animation for newly loaded images
+      content.querySelectorAll('.content-image').forEach(img => {
+          img.style.animation = 'none'; // Temporarily disable animation
+          img.offsetHeight; // Trigger reflow
+          img.style.animation = ''; // Re-enable animation
+      });
       
       // Scroll to content section smoothly
       if (window.scrollY < 300) { 
